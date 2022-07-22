@@ -1,0 +1,10 @@
+.icon-home:before,
+.icon-16:before,
+.icon-user:before,
+.layui-icon-app:before {
+    margin-right: 10px;
+}
+
+.layui-nav-child dd{
+    padding-left: 20px;
+}
