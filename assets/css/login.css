@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    background: url('/assets/images/login_bg.jpg') no-repeat center;
+    background-size: cover;
+}
+
+.myLogin {
+    width: 360px;
+    height: 300px;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding: 0 30px;
+    transform: translate(-50%, -50%);
+}
+.myRegister {
+    display: none;
+    width: 360px;
+    height: 300px;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    padding: 0 30px;
+    transform: translate(-50%, -50%);
+}
+
+.title-box {
+    height: 60px;
+    background: url('/assets/images/login_title.png') no-repeat center;
+}
+
+.register{
+    display: flex;
+    justify-content: flex-start;
+}
+.register a {
+    color: #1890ff;
+    font-size: 12px;
+}
+.goLogin{
+    display: flex;
+    justify-content: flex-start;
+}
+.goLogin a {
+    color: #1890ff;
+    font-size: 12px;
+}
+.layui-form-item{
+    position: relative;
+}
+.myLogin .layui-form-item i{
+    position: absolute;
+    top: 8px;
+    left: 0;
+}
+.myRegister .layui-form-item i{
+    position: absolute;
+    top: 8px;
+    left: 0;
+}
+.myLogin .layui-icon-username:before,
+.myLogin .layui-icon-password:before{
+    font-size: 18px;
+    color: #333;
+    margin-left: 2px;
+}
+.myRegister .layui-icon-username:before,
+.myRegister .layui-icon-password:before{
+    font-size: 18px;
+    color: #333;
+    margin-left: 2px;
+}
+.myLogin .layui-input{
+    padding-left: 25px;
+}
+.myRegister .layui-input{
+    padding-left: 25px;
+}
+.hidden_active{
+    display: none;
+}
