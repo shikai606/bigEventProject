@@ -10,17 +10,19 @@
         document.querySelector('.myRegister').style.display = 'none';
     })
     let form = layui.form;
+    let layer = layui.layer;
+    let timer = null;
     form.verify({
-        username: [/^[\S][a-zA-Z0-9_-]{6,12}$/,'账号必须是6到12位字符'],
+        username: [/[a-zA-Z0-9_-]{6,12}$/, '账号必须是6到12位字符'],
         pwd: [/^[\S]{6,12}$/, '密码必须6到12位，且不能出现空格'],
         // 校验两次密码是否一致的规则
-        repwd: function(value) {
-          var pwd = $('#register [name=password]').val()
-          if (pwd !== value) {
-            return '两次密码不一致！'
-          }
+        repwd: function (value) {
+            var pwd = $('#register [name=password]').val()
+            if (pwd !== value) {
+                return '两次密码不一致！'
+            }
         }
-      })
+    })
     // console.log(form);
     document.querySelector('#login').addEventListener('submit', e => {
         e.preventDefault();
@@ -30,14 +32,17 @@
             password: document.querySelector('#login [name="password"]').value
         }
         $.post('/api/login', data, res => {
-            console.log(res);
+            // console.log(res);
             if (res.status === 1) return layer.msg(res.message);
             layer.msg('登录成功！')
-            localStorage.setItem('token', res.token)
-            location.href = '/index.html'
+            timer = setTimeout(() => {
+                localStorage.setItem('token', res.token);
+                timer = null;
+                location.href = '/index.html';
+            },1000);
         })
     });
-    document.querySelector('#register').addEventListener('submit',e=>{
+    document.querySelector('#register').addEventListener('submit', e => {
         e.preventDefault();
         let data = {
             username: document.querySelector('#register [name="username"]').value,
@@ -45,10 +50,10 @@
         };
         $.ajax({
             url: '/api/reguser',
-            method:'POST',
+            method: 'POST',
             data,
-            success:res=>{
-                if(res.status!==0)return layer.msg(res.message);
+            success: res => {
+                if (res.status !== 0) return layer.msg(res.message);
                 layer.msg(res.message);
                 goLogin.click();
             }
